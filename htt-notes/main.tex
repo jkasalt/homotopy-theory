@@ -1,39 +1,155 @@
-\documentclass{report}
-
-\usepackage{subfiles}
-\usepackage{amsthm}
-\usepackage{amsmath}
-
-\newtheoremstyle{break}%
-{3pt}{3pt}{}
-{}%
-{\bfseries}{}%
-{\newline}{}
-
-\theoremstyle{break}
-\newtheorem{thm}{Theorem}[chapter]
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{example}[thm]{Example}
-\newtheorem{prop}[thm]{Proposition}
-
-\theoremstyle{remark}
-\newtheorem*{rem}{Remark}
-\newtheorem*{reminder}{Reminder}
-
-\DeclareMathOperator{\map}{map}
-
-\newcommand{\cat}[1]{\mathbf{#1}}
-\newcommand{\Top}{\cat{Top}}
-\newcommand{\mset}[1]{\left\{#1\right\}}
-\newcommand{\inv}{^{-1}}
-
-\title{Homotopy Theory}
-\author{Jackie Chan}
-\date{\today}
-
+\documentclass[main.tex]{subfiles}
 \begin{document}
-\maketitle
 
-\subfile{01-chapter1.tex}
+\chapter{Compact-Open Topology}
+
+The aim of this chapter is to upgrade the set of (continuous) maps \(f: X \to Y\) to a space of \emph{maps}, \(\map(X,Y)\), by defining a topology on this set.
+This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \(\cat{Top_*}\)
+
+\begin{rem}
+	Here, \(X, Y, Z\) are all spaces and all maps are continuous.
+\end{rem}
+
+\begin{defn}
+	The set of all maps \(f: X \to Y\) is given a topological structure with the \emph{compact-open} topology.
+	It is given by the sub-basis
+	
+\[
+		B(K, U) = \mset{f: X \to Y | f(K) \subset U}
+	
+\]
+	for \(K\) compact in \(X\), and \(U\) open in Y.
+\end{defn}
+
+\begin{rem}
+	Therefore, a basis for this topology is given by finite intersections of \(B(K_i, U_i), 1 \leq i \leq n\).
+	Which are of the form
+	
+\[
+		B(K_\bullet, U_\bullet) = \mset{f: X \to Y | f(K_i) \subset U_i, \forall 1 \leq i \leq n}.
+	
+\]
+\end{rem}
+
+\begin{rem}
+	We will mostly work with finite CW-complexes.
+	If \(Y\) is a CW-complex, then \(\map(X,Y)\) has the homotopy type of a CW-complex but this is not true if \(X\) is an infinite CW-complex.
+
+\end{rem}
+
+\begin{example}
+	
+\begin{enumerate}
+		\item If \(X = \ast\), then \(\map(\ast, Y) \approx Y\).
+		\item If \(X\) is discrete, say \(|X| = n\), then \(\map(X,Y) \approx Y^n \).
+		\item if \(X = I\) an interval, then \(\map(X,Y)\) is the space of paths on \(Y\) with arbitrary starting and ending points.
+		\item If \(X = S^1 \), then \(\map(S^1, Y)\) is called \(\Lambda Y\) the space of free loops.
+	
+\end{enumerate}
+\end{example}
+
+\begin{reminder}
+	(\emph{Exponential law}) We denote by \(Y^X \) the set of set-theoretical maps \(f: X \to Y\).
+	There is a natural bijection \(Z^{X \times Y} \simeq {\left(Z^{Y}\right)}^X \).
+	It is given by
+	
+\begin{align*}
+		f: (X \times Y) \to Z \mapsto a(f) = \varphi: X & \to Z^Y \\
+		x & \mapsto f(x, -)
+	
+\end{align*}
+	In fact, \(X \times -\) is left-adjoint to \(Z^- \).
+	Inside \(Y^X \supset \map(X,Y)\), we ask if this adjunction is compatible with the compact-open topology.
+	When do we have \(\map(X \times Y, Z) \simeq \map(X, \map(Y,Z))\)?
+	This is not always the case, and we will have to impose restrictions.
+\end{reminder}
+
+\begin{prop}
+	
+\begin{enumerate}
+		\item Let \(X\) be locally compact.
+		 Then, the map
+		
+\begin{align*}
+			 ev: \map(X,Y) \times X & \to Y \\
+			 (f, x) & \mapsto f(x)
+		
+\end{align*}
+		 is continuous.
+
+		\item If \(Y\) is locally compact, a map \(f: X \times Y \to Z\) is continuous as a morphism of sets iff \(a(f): X \to \map(Y,Z)\) is continuous.
+	
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	
+\begin{enumerate}
+		\item Let \(U \ni f(x)\) be open in \(Y\). Since \(f\) is continuous, \(f\inv(U)\) is an open neighborhood of \(x\).
+		 By assumption, \(X\) is locally compact, so there is \(x \in K \subset f\inv(U)\) with \(K\) compact and \(f(K) \subset U\).
+		 We choose \(B(K,U) \in \map(X,Y)\) and \(K\) as neighborhood of \(x \in X\).
+		 Then, \(ev(B(K,U) \times K) \subset U\), because \(ev\inv(U)\) is a neighborhood of \((f,x)\).
+
+		\item Notice first that if \(f: X \times Y \to Z\) is a map, then \(f_{|x \times Y}\) is also continuous for all \(x \in X\).
+		 Therefore \(a(f): X \to Z^Y \) actually lands in \(\map(Y,Z)\).
+		 Next, we showthat \(a(f)\) is continuous by looking at the preimage of \(B(L,W)\) for \(L\) compact in \(Y\), and \(W\) open in \(Z\).
+		 We see that
+\[
+a(f)\inv (B(K,W)) = \mset{x \in X | f(x \times L) \subset W}.
+\]
+		 Since W is open, \(f\inv(W)\) is open in \(X \times Y\) and contains \(x \times L\).
+		 Let us choose an open subset, \(U \times V\) for the product topology in \(X \times Y\).
+		 We claim we can assume that it contains \(x \times L\) because \(L\) is compact.
+
+		 We have shown that every \(x \in a(f)\inv (B(K,W))\) has an open neighborhood in the preimage.
+		 Finally, assume \(\varphi: X \to \map(X,Y)\) is continuous.
+		 We prove that \(b(\varphi)\) is continuous:
+		
+\begin{align*}
+			 b(\varphi), (X \times Y) \stackrel{\varphi \times 1}{\longrightarrow} & \map(Y,Z) \times Y \stackrel{ev}{\to} Z \\
+			 (x,y) \mapsto & (\varphi(x), y) \mapsto \varphi(x)(y)
+		
+\end{align*}
+		 We see that the map \(ev\) is continuous thanks to point one of this proof, as \(Y\) is locally compact.
+		 Then, \(b(\varphi)\) is continuous since \(\varphi \times 1\) and \(ev\) are.
+	
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+	If X,Y are Hausdorff, then a sub-basis for \(\map(X \times Y, Z)\) is given by \(B(K \times L, W)\).
+	Where \(K\) is compact in \(X\), \(L\) is compact in \(Y\), and \(W\) is open in \(Z\).
+\end{lemma}
+
+\begin{proof}
+	Let \(A \subset X \times Y\) be compact and \(A_X = \pi_X(A)\) \(A_Y = \pi_Y(A)\) the projections.
+	They are compact.
+	For \(f \in B(A,W)\), in general, \(f \notin B(A_X \times A_Y, W)\).
+	But, for any \((x,y) \in A\), \((x,y) \in A_X \times A_Y \cap f\inv(W)\).
+	Choose \((x,y) \in U_x \times V_y\), where \(x \in U_x \subset A_X\) and \(y \in V_y \subset A_Y\), both open.
+	Compact and Hausdorff implies normal, therefore regular, so we can separate \(x\) from \(A_X \setminus U_x\) by \(x \in U \subset \bar{U} \subset U_x\), and \(y\) from \(A_Y \setminus V_y\) in the same way.
+	The compact subspace \(\bar U \times \bar V\) covers \(A\). So we have a finite cover, \(\bar{U_i} \times \bar{V_i}\).
+	Then \(f \in B(\bar{U_i} \times \bar{V_i}, W)\) since \(\bar{U_i} \times \bar{V_i} \subset A\).
+	Finally, we have \(f \in \bigcap_{i = 1}^n B(\bar{U_i} \times \bar{V_i}, W)\)
+\end{proof}
+
+\begin{rem}
+	Notice that \(a(-)\) sends \(B(K \times L, W)\) to \(B(K, B(L,W))\)
+\end{rem}
+
+\begin{lemma}
+	If a space \(Z\) is Hausdorff, \(\map(Y,Z)\) is as well.
+
+\end{lemma}
+
+\begin{proof}
+	exercise
+
+\end{proof}
+
+\begin{lemma}
+	Let \(Z\) be Hausdorff, and \(\cB\) be a sub-basis of its topology.
+	Then, the sets of the form \(B(K, \cB)\) for \(K\) compact in \(Y\), form a sub-basis for the compact-open topology on \(\map(Y,Z)\)
+\end{lemma}
 
 \end{document}
