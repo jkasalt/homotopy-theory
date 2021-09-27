@@ -1,0 +1,89 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\chapter{Compact-Open Topology}
+
+The aim of this chapter is to upgrade the set of (continuous) maps \(f: X \to Y\) to a space of \emph{maps}, \(\map(X,Y)\), by defining a topology on this set.
+This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \(\cat{Top_*}\)
+
+\begin{rem}
+	Here, \(X, Y, Z\) are all spaces and all maps are continuous.
+\end{rem}
+
+\begin{defn}
+	The set of all maps \(f: X \to Y\) is given a topological structure with the \emph{compact-open} topology.
+	It is given by the sub-basis
+	\[
+		B(K, U) = \mset{f: X \to Y | f(K) \subset U}
+	\]
+	for \(K\) compact in \(X\), and \(U\) open in Y.
+\end{defn}
+
+\begin{rem}
+	Therefore, a basis for this topology is given by finite intersections of \(B(K_i, U_i), 1 \leq i \leq n\).
+	Which are of the form
+	\[
+		B(K_\bullet, U_\bullet) = \mset{f: X \to Y | f(K_i) \subset U_i, \forall 1 \leq i \leq n}.
+	\]
+\end{rem}
+
+\begin{rem}
+	We will mostly work with finite CW-complexes.
+	If \(Y\) is a CW-complex, then \(\map(X,Y)\) has the homotopy type of a CW-complex but this is not true if \(X\) is an infinite CW-complex.
+
+\end{rem}
+
+
+\begin{example}
+	\begin{enumerate}
+		\item If \(X = \ast\), then \(\map(\ast, Y) \approx Y\).
+		\item If \(X\) is discrete, say \(|X| = n\), then \(\map(X,Y) \approx Y^n \).
+		\item if \(X = I\) an interval, then \(\map(X,Y)\) is the space of paths on \(Y\) with arbitrary starting and ending points.
+		\item If \(X = S^1 \), then \(\map(S^1, Y)\) is called \(\Lambda Y\) the space of free loops.
+	\end{enumerate}
+\end{example}
+
+\begin{reminder}
+	(\emph{Exponential law}) We denote by \(Y^X \) the set of set-theoretical maps \(f: X \to Y\).
+	There is a natural bijection \(Z^{X \times Y} \simeq {\left(Z^{Y}\right)}^X \).
+	It is given by
+	\begin{align*}
+		f: (X \times Y) \to Z \mapsto \alpha(f) = \varphi: X & \to Z^Y         \\
+		x                                                    & \mapsto f(x, -)
+	\end{align*}
+	In fact, \(X \times -\) is left-adjoint to \(Z^- \).
+	Inside \(Y^X \supset \map(X,Y)\), we ask if this adjunction is compatible with the compact-open topology.
+	When do we have \(\map(X \times Y, Z) \simeq \map(X, \map(Y,Z))\)?
+	This is not always the case, and we will have to impose restrictions.
+\end{reminder}
+
+\begin{prop}
+	\begin{enumerate}
+		\item Let \(X\) be locally compact.
+		      Then, the map
+		      \begin{align*}
+			      ev: \map(X,Y) \times X & \to Y        \\
+			      (f, x)                 & \mapsto f(x)
+		      \end{align*}
+		      is continuous.
+
+		\item If \(Y\) is locally compact, a map \(f: X \times Y \to Z\) is continuous as a morphism of sets iff \(\alpha(f): X \to \map(Y,Z)\) is continuous.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Let \(U \ni f(x)\) be open in \(Y\). Since \(f\) is continuous, \(f\inv(U)\) is an open neighborhood of \(x\).
+		      By assumption, \(X\) is locally compact, so there is \(x \in K \subset f\inv(U)\) with \(K\) compact and \(f(K) \subset U\).
+		      We choose \(B(K,U) \in \map(X,Y)\) and \(K\) as neighborhood of \(x \in X\).
+		      Then, \(ev(B(K,U) \times K) \subset U\), because \(ev\inv(U)\) is a neighborhood of \((f,x)\).
+
+		\item Notice first that if \(f: X \to Y\) is a map, then \(f_{}\)
+                        asdjasd
+    adsad
+
+	\end{enumerate}
+\end{proof}
+
+
+\end{document}
