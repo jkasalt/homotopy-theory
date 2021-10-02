@@ -2,6 +2,7 @@
 \begin{document}
 
 \chapter{Compact-Open Topology}
+\setcounter{section}{1}
 
 The aim of this chapter is to upgrade the set of (continuous) maps \(f: X \to Y\) to a space of \emph{maps}, \(\map(X,Y)\), by defining a topology on this set.
 This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \(\cat{Top_*}\)
@@ -13,10 +14,11 @@ This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \
 \begin{defn}
 	The set of all maps \(f: X \to Y\) is given a topological structure with the \emph{compact-open} topology.
 	It is given by the sub-basis
-	
+
+
 \[
 		B(K, U) = \mset{f: X \to Y | f(K) \subset U}
-	
+
 \]
 	for \(K\) compact in \(X\), and \(U\) open in Y.
 \end{defn}
@@ -24,10 +26,11 @@ This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \
 \begin{rem}
 	Therefore, a basis for this topology is given by finite intersections of \(B(K_i, U_i), 1 \leq i \leq n\).
 	Which are of the form
-	
+
+
 \[
 		B(K_\bullet, U_\bullet) = \mset{f: X \to Y | f(K_i) \subset U_i, \forall 1 \leq i \leq n}.
-	
+
 \]
 \end{rem}
 
@@ -38,13 +41,15 @@ This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \
 \end{rem}
 
 \begin{example}
-	
+
+
 \begin{enumerate}
 		\item If \(X = \ast\), then \(\map(\ast, Y) \approx Y\).
 		\item If \(X\) is discrete, say \(|X| = n\), then \(\map(X,Y) \approx Y^n \).
 		\item if \(X = I\) an interval, then \(\map(X,Y)\) is the space of paths on \(Y\) with arbitrary starting and ending points.
 		\item If \(X = S^1 \), then \(\map(S^1, Y)\) is called \(\Lambda Y\) the space of free loops.
-	
+
+
 \end{enumerate}
 \end{example}
 
@@ -52,11 +57,12 @@ This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \
 	(\emph{Exponential law}) We denote by \(Y^X \) the set of set-theoretical maps \(f: X \to Y\).
 	There is a natural bijection \(Z^{X \times Y} \simeq {\left(Z^{Y}\right)}^X \).
 	It is given by
-	
+
+
 \begin{align*}
 		f: (X \times Y) \to Z \mapsto a(f) = \varphi: X & \to Z^Y \\
 		x & \mapsto f(x, -)
-	
+
 \end{align*}
 	In fact, \(X \times -\) is left-adjoint to \(Z^- \).
 	Inside \(Y^X \supset \map(X,Y)\), we ask if this adjunction is compatible with the compact-open topology.
@@ -65,25 +71,29 @@ This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \
 \end{reminder}
 
 \begin{prop}
-	
+
+
 \begin{enumerate}
 		\item Let \(X\) be locally compact.
 		 Then, the map
-		
+
+
 \begin{align*}
 			 ev: \map(X,Y) \times X & \to Y \\
 			 (f, x) & \mapsto f(x)
-		
+
 \end{align*}
 		 is continuous.
 
 		\item If \(Y\) is locally compact, a map \(f: X \times Y \to Z\) is continuous as a morphism of sets iff \(a(f): X \to \map(Y,Z)\) is continuous.
-	
+
+
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-	
+
+
 \begin{enumerate}
 		\item Let \(U \ni f(x)\) be open in \(Y\). Since \(f\) is continuous, \(f\inv(U)\) is an open neighborhood of \(x\).
 		 By assumption, \(X\) is locally compact, so there is \(x \in K \subset f\inv(U)\) with \(K\) compact and \(f(K) \subset U\).
@@ -94,8 +104,10 @@ This makes the category of spaces \emph{enriched} over \(\Top\), as well as on \
 		 Therefore \(a(f): X \to Z^Y \) actually lands in \(\map(Y,Z)\).
 		 Next, we showthat \(a(f)\) is continuous by looking at the preimage of \(B(L,W)\) for \(L\) compact in \(Y\), and \(W\) open in \(Z\).
 		 We see that
+
 \[
-a(f)\inv (B(K,W)) = \mset{x \in X | f(x \times L) \subset W}.
+			 a(f)\inv (B(K,W)) = \mset{x \in X | f(x \times L) \subset W}.
+
 \]
 		 Since W is open, \(f\inv(W)\) is open in \(X \times Y\) and contains \(x \times L\).
 		 Let us choose an open subset, \(U \times V\) for the product topology in \(X \times Y\).
@@ -104,20 +116,22 @@ a(f)\inv (B(K,W)) = \mset{x \in X | f(x \times L) \subset W}.
 		 We have shown that every \(x \in a(f)\inv (B(K,W))\) has an open neighborhood in the preimage.
 		 Finally, assume \(\varphi: X \to \map(X,Y)\) is continuous.
 		 We prove that \(b(\varphi)\) is continuous:
-		
+
+
 \begin{align*}
 			 b(\varphi), (X \times Y) \stackrel{\varphi \times 1}{\longrightarrow} & \map(Y,Z) \times Y \stackrel{ev}{\to} Z \\
 			 (x,y) \mapsto & (\varphi(x), y) \mapsto \varphi(x)(y)
-		
+
 \end{align*}
 		 We see that the map \(ev\) is continuous thanks to point one of this proof, as \(Y\) is locally compact.
 		 Then, \(b(\varphi)\) is continuous since \(\varphi \times 1\) and \(ev\) are.
-	
+
+
 \end{enumerate}
 \end{proof}
 
 \begin{lemma}
-	If X,Y are Hausdorff, then a sub-basis for \(\map(X \times Y, Z)\) is given by \(B(K \times L, W)\).
+	If \(X,Y\) are Hausdorff, then a sub-basis for \(\map(X \times Y, Z)\) is given by \(B(K \times L, W)\).
 	Where \(K\) is compact in \(X\), \(L\) is compact in \(Y\), and \(W\) is open in \(Z\).
 \end{lemma}
 
@@ -149,7 +163,226 @@ a(f)\inv (B(K,W)) = \mset{x \in X | f(x \times L) \subset W}.
 
 \begin{lemma}
 	Let \(Z\) be Hausdorff, and \(\cB\) be a sub-basis of its topology.
-	Then, the sets of the form \(B(K, \cB)\) for \(K\) compact in \(Y\), form a sub-basis for the compact-open topology on \(\map(Y,Z)\)
+	Then, the sets of the form \(B(K, \cB)\) for \(K\) compact in \(Y\), form a sub-basis for the compact-open topology on \(\map(Y,Z)\).
 \end{lemma}
 
+\begin{proof}
+	A sub-basic open in \(\map(Y,Z)\) is of the form \(B(K,V)\) for \(K \subset Y\) compact, \(V \subset Z\) open.
+	For any \(f \in B(K,V)\) we construct a neighborhood of the form
+
+\[
+		f \in \bigcap B(K, B_i) \quad \text{for} B_i \in \cB
+
+\]
+	where the intersection is finite.
+	Since V is open \(V = \bigcup_\alpha V_\alpha\), \(V_\alpha\) basic open,
+	\(V_\alpha = \bigcap_{j = 1}^{n_\alpha}, V_{\alpha, j} \in \cB, n_\alpha \in \N, \forall \alpha \).
+	As \(f(K) \subset V \iff f\inv(V_\alpha)\) covers \(K\) in \(Y\).
+	By compacity find \(1 \leq i \leq k\) st \(f\inv(V_{\alpha_i})\) covers K.
+	By exercise 1, find \(K_i \subset f\inv(V_{\alpha_i})\) st \(K = \bigcup_{i = 1}^k K_i\).
+	Now, \(f(K_i) \subset V_{\alpha_i,j} \forall i,j \).
+	This means \(f \in \bigcap_{i,j} B(K_i, V_{\alpha_i, j})\)
+\end{proof}
+
+\begin{thm}
+	Let \(X,Y,Z\) be Hausdorff spaces, and \(Y\) locally compact.
+	Then, the exponential law restricts to a homeomorphism
+
+\[
+		\map(X \times Y, Z) \simeq \map(X, \map(Y,Z)).
+
+\]
+\end{thm}
+
+\begin{proof}
+	First notice that the set-theoretic exponential law \(Z^{X \times Y} \approx {(Z^Y)}^X \), sends a map \(f: X \times Y \to Z\) to a (continuous) map, \(X \to \map(Y,Z)\).
+	Conversely, a map \(X \to \map(Y,Z)\) corresponds to a map \(X \times Y \to Z\) which is continuous since it is a composition
+
+\[
+		X \times Y \stackrel{g}{\longrightarrow} \map(Y, Z) \times Y \stackrel{ev}{\longrightarrow} Z.
+
+\]
+	By lemma?1.6?, \(\cB(K \times L, W)\) forms a sub-basis of the source for \(K \subset X, L \subset Y\) compact, \(W \subset Z\) open.
+	By lemma?1.7?, since \(Z\) is Hausdorff, so is \(\map(Y,Z)\).
+	Hence we can use lemma?1.8? and get a sub-basis for the compact open topology on the target. Namely, \(\cB(K,\cB(L,W))\) for \(K,L,W\) as above.
+	The exponential law sends \(\cB(K \times L, W)\) to \(\cB(K, \cB(L,W))\) and vice versa, so we indeed have a homeomorphism.
+\end{proof}
+
+\begin{rem}
+
+\begin{itemize}
+		\item Hausdorff is OK
+		\item Locally compact is more restrictive \ldots A CW-complex is locally compact iff every open cell meets only \(f\) many cells (0-dim open cell is a point).
+		 In particular \(\R P^\infty, \C P^\infty, \bigvee^\infty S^n \) are not locally compact.
+		 This shows that our setup is not ideal, and although there are ways around this we will content ourselves to working with locally compact Hausdorff spaces.
+
+\end{itemize}
+\end{rem}
+
+\section{Categorical considerations}
+
+This chapter is inspired by the book from Peter May, Chapter 5.
+John Milnor (1931-) advocated for the use of category of all spaces having the homotopy type of a CW-complex.
+He proved that \(\map(X,Y)\) is a CW-complex if \(X,Y\) are, and if \(X\) is compact.
+It fails if \(X\) is not compact in general.
+Thus, this category is not ``Cartesian closed'' (\exp law).
+Nowadays, a commonly used ``category of spaces'' is that of compactly generated spaces.
+
+\begin{defn}
+	A space \(X\) is \emph{weak Hausdorff} if any map \(g: K \to X\) with \(K\) compact, has a closed image.
+\end{defn}
+
+\begin{defn}
+	A subspace \(A \subset X\) is \emph{compactly closed} if \(g\inv(A)\) in \(K\) for \(g\) as in def?2.1? is closed in \(K\).
+\end{defn}
+
+If \(X\) is weak Hausdorff, \(A\) being compactly closed means that \(A \cap L\) is closed in \(X\) for any compact \(L \subset X\)
+
+\begin{defn}
+	A \emph{\(k\)-space} \(X\) is a space st every compactly closed subspace \(A\) is closed. A weak Hausdorff \(k\)-space is a \emph{compactly generated} space.
+\end{defn}
+Hurewicz (1904--1956).
+McCord (1969) noticed the Cartesian-closed property.
+The product of \(X\) and \(Y\) is not \(X \times Y\), but its \(k\)-ification \(k(X \times Y)\), where all compactly closed subspaces are turned into closed ones (same goes for maps \ldots).
+
+\section{Pointed mapping spaces}
+
+All spaces are pointed, so \(X\) will mean \((X, x_0)\), and all spaces are Hausdorff and locally compact.
+
+\begin{defn}
+	Let \(X,Y\) be pointed spaces. The \emph{pointed mapping space} \(\map_*(X,Y)\) is the subspace of \(\map(X,Y)\) of \(f: X \to Y\) such that \(f(x_0) = y_0\). The base point is \(c_{y_0}: X \to Y, \ x \mapsto y_0\).
+\end{defn}
+
+Recall the \emph{smash product} \(X \wedge Y = X \times Y / X \vee Y\).
+
+\begin{lemma}
+	Let
+
+\[
+
+\begin{tikzcd}
+			A \ar{r}{f} \ar{d}{g} & B \ar{d}{h} \\
+			C \ar{r}{i} & D
+
+\end{tikzcd}
+
+\]
+	be a pushout sequence of Hausdorff and locally compact spaces.
+	Then
+
+\[
+
+\begin{tikzcd}
+			\map(D,Y) \ar{r}{i^*} \ar{d}{h^*} & \map(C,Y) \ar{d}{g^*} \\
+			\map(B,Y) \ar{r}{f^*} & \map(A,Y)
+
+\end{tikzcd}
+
+\]
+	is a pullback square.
+\end{lemma}
+
+\begin{proof}
+	We check the universal property. Consider
+
+\[
+\begin{tikzcd}
+			X \ar[bend left = 20]{rrd}{\kappa} \ar[dotted]{dr}{\exists! \delta \,?} \ar[bend right = 20, swap]{rdd}{\beta} & & \\
+			& \map(D,Y) \ar{r} \ar{d} & \map(C,Y) \ar{d}{g^*} \\
+			& \map(B,Y) \ar{r}{f^*} & \map(A,Y)
+
+\end{tikzcd}
+\]
+
+	By adjunction we find a diagram
+
+
+\[
+\begin{tikzcd}
+			X \times A \dar{1 \times g}\rar{1 \times f} & X \times B \ar[bend left = 20]{ddr}{b = a(\beta)} \dar{1 \times h} & \\
+			X \times C \rar{1 \times i} \ar[bend right = 20]{rrd}{k = a(x)} & X \times D \drar[dotted]{\exists! d} & \\
+			& & Y
+
+\end{tikzcd}
+\]
+
+	which commutes by naturality, for example \(b \circ (1 \times f) = a(f^* \circ \beta)\).
+	Since \(X \times -\) is a left adjoint so it preserves pushout, therefore \(d\) exists and is unique (and 1? and 2: commute).
+	Choose \(\delta = b(d)\) so 1'?, 2'? since \(a(\delta) = d\), \(\delta\) is unique.
+\end{proof}
+
+\begin{cor}
+	Let \(A \subset X\) and \(X/A\) is Hausdorff and locally compact.
+	Then \(\map_*(X/A, Y)\) is homeomorphic to the subspace of \(\map(X,Y)\) of \(f: X \to Y\) such that \(f(A) = y_0\).
+\end{cor}
+
+\begin{proof}
+	\(X/A\) has \([a]\) as basepoint for any \(a \in A\).
+	The pushout
+\begin{tikzcd}[cramped, sep = small]
+		A \rar{i} \dar & X \dar \\
+		\ast \rar & X/A
+
+\end{tikzcd}
+induces by lemma?3.2? a pullback square
+
+\[
+\begin{tikzcd}
+			\map(X/A, Y) \rar \dar & \map(\ast, Y) \approx Y \dar \\
+			\map(X,Y) \rar & map(A,Y)
+
+\end{tikzcd}
+\]
+
+	So \(\map(X/A, Y)\) is a subspace of \(\map(X,Y) \times Y\).
+	Pointed maps correspond to pairs \((f, y_0)\).
+	Then \(\map_*(X/A, Y)\) is thus identified with a subspace of \(\map(X,Y) \times y_0\) of \((f, y_0)\) such that \(f_{|A} = c_{y_0}\)
+\end{proof}
+
+\begin{cor}
+	\(\map_*(X \wedge Y, Z)\) is homeomorphic to the subspace \(\map(X \times Y, Z)\) of maps \(f: X \times Y \to Z\) such that \(f_{|X\vee Y} \equiv c_{z_0}\).
+\end{cor}
+
+\begin{thm}
+	We have a homeomorphism \(\map_*(X \wedge Y, Z) \simeq map_*(X, \map_*(Y,Z))\).
+\end{thm}
+
+\begin{proof}
+	We restrict the homeo \(\map(X \times Y, Z) \simeq \map(X, \map(Y,Z))\) to \(\map_*(X \wedge Y, Z)\) by corollary?3.4. The image \(a(f)\) of a map \(f: X \times Y \to Z\) such that \(f_{|X \vee Y} \equiv c_{z_0}\) is a map
+
+\begin{align*}
+		a(f): & X \to \map(Y,Z) \\
+		 & x \mapsto a(f)(x) = f(x,-): y_0 \mapsto z_0 \\
+		 & x_0 \mapsto a(f)(x_0) = f(x_0,-) = c_{z_0}
+
+\end{align*}
+	Hence \(a(f)\) belongs to \(\map_*(X, \map_*(Y,Z))\) Conversely the inverse homeo \(b^* \) from section 1 from \(map_*(X, \map_*(Y,Z))\) to \(\map_*(X \wedge Y, Z)\)
+\end{proof}
+
+\begin{cor}
+
+\begin{enumerate}
+		\item The smash product \(X \wedge -\) converts pushout with puhsouts
+		\item The pointed map, \(\map_*(X, -)\) convertes pullbacks into pullbacks
+		\item The pointed map, \(\map_*(-, Y)\) convertes pushouts into pullbacks
+
+\end{enumerate}
+\end{cor}
+
+\begin{defn}
+	The \emph{loop space} \(\Omega X = \map_*(S^1, X)\). Elements of \(\Omega X\) are based loops in \(X\)
+\end{defn}
+
+\begin{defn}
+	The \emph{reduced suspension} \(SX = S^1 \wedge X\)
+\end{defn}
+
+\begin{prop}
+
+\[
+\map_*(X, \Omega Y) \simeq \map_*(SX,Y)
+\]
+	We say \(S \dashv \Omega\).
+	In paricular \([X, \Omega Y]_* \equiv [SX, Y]_*\), (take \(\pi_0\)).
+\end{prop}
 \end{document}
