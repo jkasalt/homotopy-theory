@@ -1,0 +1,57 @@
+\documentclass{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+
+\title{Homotopy Theory -- Sheet 4 Exercise 5 Solution}
+\author{Kaltenrieder, Garry \\
+        \and
+        Bracone, Luca}
+
+\begin{document}
+\maketitle
+All maps are continuous and all spaces are based at $b \in B \subseteq A
+	\subseteq X$ implicitly. The inclusions are denoted \[i_A: A \to X, i_B: B \to
+	X, o_A: \{b\} \to A, o_B: \{b\} \to B, \text{ and } j: B \to A.\] From the
+course, we have three long exact sequences, shown in the rows of the following
+diagram:
+\[
+	\begin{tikzcd}
+		&\pi_{n-1}(B) &\pi_{n-1}(A) &\vdots &\vdots & \\
+		\dots \rar{} &\pi_n(A) \uar[blue]{ {\delta_B}_{|A} \circ (id, o_B)_*} \rar{{i_A}_*} &\pi_n(X) \uar[blue]{\delta_A \circ (id, o_A)_*} \rar{(id,{o_A})_*} &\pi_n(X,A) \uar[purple, swap]{\partial} \rar{\delta_A} &\pi_{n-1}(A) \uar[blue]{} \rar{} &\dots \\
+		\dots \rar{} &\pi_n(B) \uar[blue]{} \rar{{i_B}_*} &\pi_n(X) \uar[blue]{} \rar{(id,{o_B})_*} &\pi_n(X,B) \uar[purple, swap]{(id, j)_*} \rar{\delta_B} &\pi_{n-1}(B) \uar[blue]{} \rar{} &\dots \\
+		\dots \rar{} &\pi_n(B) \uar[blue]{} \rar{j_*}     &\pi_n(A) \uar[blue]{} \rar{(id,{o_B})_*} &\pi_n(A,B) \uar[purple, swap]{(i_A, id)_*} \rar{{\delta_B}_{|A}} &\pi_{n-1}(B) \uar[blue]{} \rar{} &\dots \\
+		&\vdots \uar[blue] & \vdots \uar[blue] &\pi_{n+1}(X,A) \uar[purple, swap]{\partial} &\vdots \uar[blue] & \\
+		& & &\vdots \uar[purple]{} & & \\
+	\end{tikzcd}
+\]
+And we see that the sequence that we are searching for appears in the fourth
+column of the diagram.  By choosing
+the right maps (inclusions) for the blue arrows, it is clear enough that this
+diagram is commutative. %TODO ???? actually I'm not sure
+Let us prove exactness at\dots
+
+\begin{itemize}
+	\item[$\pi_n(X,B)$:]
+		\begin{itemize}
+			\item Let $\gamma \in \ker((id, j_*))$ then $\gamma$ is homotopic to the
+			      constant path at $b$ relative to $A$ %TODO finish this
+			\item Let $\gamma \in \Im((i_A, id)_*)$ then we have $\beta \in
+				      \pi_n(A,B)$ such that $(i_A)_* \beta = \gamma$, but then we have that
+			      $\Im(\gamma) \subset A$ and so $\gamma$ is homotopic to the constant
+			      map relative to $A$
+		\end{itemize}
+	\item[$\pi_n(A,B)$:]
+		\begin{itemize}
+			\item %TODO finish this
+			\item We know that $\partial = o_B \circ \delta_A$. Then, $i_A \circ o_B
+				      \circ \delta_A = 0$ because the first row is exact.
+		\end{itemize}
+	\item[$\pi_n(X,A)$:]
+		\begin{itemize}
+			\item %TODO
+			\item %TODO
+		\end{itemize}
+\end{itemize}
+\end{document}
